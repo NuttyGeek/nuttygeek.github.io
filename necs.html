@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <title>Document</title>
+</head>
+<style>
+
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+
+@media only screen and (max-width: 780px) {
+  .menu{
+    display: none !important;
+  }
+}
+
+  @font-face {
+    font-family: "Product Sans Bold";
+    src: url("productsansbold.ttf");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Product Sans";
+    src: url("productsans.ttf");
+    font-weight: 400;
+  }
+
+  :root{
+    --lightgolden: rgba(249, 197, 70,0.7);
+    --golden: #F9C546;
+    --black:  #000;
+    --gray: #707070;
+    --lightgray: rgba(226, 226, 226, 0.2);
+    --white: #fff;
+  }
+
+  body{
+    font-family: "Product Sans";
+    margin: 0px;
+    color: var(--gray);
+  }
+
+  h1{
+    font-family: "Product Sans Bold";
+    color: var(--black);
+  }
+
+  .logo{
+    height: 70px;
+    width: 70px;
+  }
+
+  .branding{
+    display: flex;
+    align-items: center;
+  }
+
+  button:focus{
+    outline: 0px;
+  }
+
+  nav{
+    position: sticky;
+    background-color: white;
+    top: 0;
+    z-index: 1;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 70px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+
+  .menu{
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+  }
+
+  .title{
+    font-size: 4em;
+  }
+
+  .menu ul{
+    list-style: none; 
+    display: inline;
+  }
+
+  button{
+    background-color: var(--golden);
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin: 5px;
+    color: var(--black);
+    border-radius: 5px;
+    border: 0px;
+    font-size: inherit;
+  }
+
+  button:hover{
+    background-color: var(--black);
+    color: white;
+  }
+
+  .menu li{
+    padding: 10px;
+    margin: 5px;
+  }
+
+  .menu li:hover{
+    background-color: var(--lightgolden);
+    border-radius: 5px;
+    cursor: default;
+  }
+
+  .menu li{
+    display: inline;
+  }
+
+  .is-primary{
+    background-color: var(--golden) !important;
+    color: black;
+  }
+
+  .header-image{
+    background-color: var(--lightgray);
+  }
+
+  .container{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: stretch;
+    justify-content: stretch;
+    overflow: hidden;
+  }
+  .container-item{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    flex: 1;
+  }
+
+  .header-left{
+    /* padding-left: 50px; */
+    min-width: 400px;
+
+  }
+
+  .left-box{
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-right{
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--lightgray) ;
+  }
+  .container button{
+    margin-top: 20px;
+  }
+
+  .section-heading{
+    text-align: center;
+    font-size: 2em;
+  }
+
+  #our-courses{
+    padding: 20px;
+  }
+
+  .tabs{
+    padding: 20px;
+  }
+
+  .card{
+    margin: 10px;
+    min-width: 300px;
+    max-width: 350px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .card h1{
+    font-size: 1.5em;
+  }
+
+  .courses-tabs{
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .select{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 400px;
+    text-align: center;
+    text-justify: auto;
+    font-size: 1.2em;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+
+  #search{
+    width: 400px;
+  }
+
+  form{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .choose-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .choose{ 
+    flex: 1;
+  }
+
+  .choose-left{
+    min-width: 400px;
+    text-align: center;
+  }
+
+  .choose-right{
+    min-width: 400px;
+    padding-left: 20px;
+  }
+
+  .choose img{
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  .points{
+    font-size: 25px;
+    line-height: 2em;
+    color: black;
+  }
+
+  .cta-section{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 20px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--lightgray);
+    text-align: center;
+  }
+
+  .cta-heading{
+    font-size: 2em;
+  }
+
+  .cta-description{
+    font-size: 1.5em;
+  }
+
+  .cta-buttons{
+    margin-top: 30px;
+  }
+
+  #discord{
+    background-color: white;
+    border: 1px solid black;
+  }
+
+  #discord:hover{
+    color: black;
+  }
+
+  #blogs{
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .contact-section{
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .contact-section button{
+    width: 400px;
+  }
+
+  form p{
+    font-size: 1.5em;
+  }
+
+  input{
+    width: 400px;
+    margin: 10px;
+    font-size: 1.3em;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  textarea{
+    margin: 10px;
+    font-size: 1.3em;
+    width: 400px;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid black;
+  }
+
+  textarea:focus{
+    outline: 0px;
+  }
+
+  input:focus{
+    outline-width: 0px;
+  }
+
+  .tagline{
+    font-size: 2em;
+  }
+
+  .social-list{
+    cursor: pointer;
+    font-size: 1.8em;
+    padding-left: 50px;
+  }
+
+  .social-list li:hover{
+    color: black;
+    border-bottom: 5px solid var(--golden);
+  }
+
+  .contact-columns{
+    padding: 20px;
+    display: flex;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    align-items: center;
+
+  }
+
+  .contact-column{
+    flex: 1;
+    min-width: 400px;
+    padding-top: 20px;
+  }
+
+  .social-heading{
+    font-size: 2em;
+    padding-left: 20px;
+  }
+
+  ::selection{
+    background-color: var(--lightgolden);
+    color: black;
+  }
+
+  .footer{
+    font-size: 1.3em;
+    background-color: var(--gray) ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    padding-bottom: 20px;
+  }
+
+  .footer ul{
+    margin-top: 30px;
+  }
+
+  .footer div{
+    min-width: 300px;
+    padding-top: 30px;
+  }
+
+  .footer .image-div{
+    text-align: center;
+  }
+
+  .footer li:hover{
+    cursor: pointer;
+    color: black;
+  }
+
+  .copyright{
+    color: white;
+    background-color: var(--gray);
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+  select:focus {
+    outline-width: 0px;
+  }
+
+</style>
+<body>
+  <!--  navbar start -->
+  <nav>
+    <div class="branding">
+      <img class="logo" src="assets/logo2.svg"/>
+      <h1>New Era Code School</h1>
+    </div>
+    <div class="menu">
+      <ul>
+        <li>Home</li>
+        <li>About Us</li>
+        <li>Blog</li>
+        <button>Contact Us</button>
+      </ul>
+    </div>
+  </nav>
+      <!--  navbar end -->
+      <!-- header section -->
+  <section class="container">
+    <div class="header-left container-item">
+      <div class="left-box">
+        <div>
+          <h1 class="title">New Era <br>Code School</h1>
+          <h3 class="tagline">Realistic Learning for Aspiring Coders</h3>
+          <button>View Courses</button>
+        </div>
+      </div>
+    </div>
+    <div class="header-right container-item">
+    <img src="assets/header_image.svg" width="400px">
+    </div>
+  </section>
+
+  <!-- courses offered section -->
+  <section id="our-courses">
+    <h1 class="section-heading">Courses Offered</h1>
+    <!-- tabs -->
+    <div class="tabs is-fullwidth ">
+        <ul>
+          <li>
+            <a>
+              <!-- <span class="icon"><i class="fas fa-angle-left" aria-hidden="true"></i></span> -->
+              <span>Live Classes</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <!-- <span class="icon"><i class="fas fa-angle-up" aria-hidden="true"></i></span> -->
+              <span>Online Courses</span>
+            </a>
+          </li>
+          <li>
+            <a>
+              <span>Offline Classes</span>
+              <!-- <span class="icon"><i class="fas fa-angle-right" aria-hidden="true"></i></span> -->
+            </a>
+          </li>
+        </ul>
+    </div>
+      <!-- content areas -->
+    <section>
+      <p>In Live classes we connect with students via Video Call & students ask their questions right at the moment or ask their question in forum.</p>
+      <div class="courses-tabs">
+        <!--  card 1  -->
+        <div class="card">
+          <img src="assets/course_image.svg">
+          <h1>Course Name</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+          <button>Get Started</button>
+        </div>
+        <!--  card 2  -->
+        <div class="card">
+            <img src="assets/course_image.svg">
+            <h1>Course Name</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+            <button>Get Started</button>
+          </div>
+          <!--  card 3   -->
+        <div class="card">
+            <img src="assets/course_image.svg">
+            <h1>Course Name</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+            <button>Get Started</button>
+          </div>
+      </div>
+    </section>
+
+    <!-- online classes area -->
+    <section>
+        <p>In Live classes we connect with students via Video Call & students ask their questions right at the moment or ask their question in forum.</p>
+        <div class="courses-tabs">
+          <!--  card 1  -->
+          <div class="card">
+            <img src="assets/course_image.svg">
+            <h1>Course Name</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+            <button>Get Started</button>
+          </div>
+          <!--  card 2  -->
+          <div class="card">
+              <img src="assets/course_image.svg">
+              <h1>Course Name</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+              <button>Get Started</button>
+            </div>
+            <!--  card 3   -->
+          <div class="card">
+              <img src="assets/course_image.svg">
+              <h1>Course Name</h1>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquid aut nihil ducimus dolorum cum</p>
+              <button>Get Started</button>
+            </div>
+        </div>
+      </section>
+
+    <!--  offline classes section -->
+    <section>
+      <h2>Find out if we are providing services in your city: </h2>
+      <form>
+        <label>
+          Select Your Country
+        </label><br>
+        <select class="select" placeholder="Select Country">
+          <option>India</option>
+          <option>United States</option>
+          <option>Australia</option>
+        </select><br>
+        <label>Select Your City</label><br>
+        <select class="select" placeholder="Select Country">
+            <option>Delhi</option>
+            <option>Amritsar</option>
+            <option>Chandigarh</option>
+          </select>
+          <br>
+          <button id="search">Search</button>
+      </form>
+    </section>
+  </section>
+
+  <!-- Why choose us section -->
+  <section>
+    <h1 class="section-heading">Why Choose Us ?</h1>
+    <div class="choose-container">
+      <div class="choose choose-left">
+        <img src="assets/why-choose-us.png">
+      </div>
+      <div class="choose choose-right">
+        <ul class="points">
+          <li># Quality Teaching</li>
+          <li># Live Classes using Google Classroom</li>
+          <li># 24 x 7 Expert Support </li>
+          <li># Online courses with Doubt Clearing Sessions</li>
+          <li># EMI Payment Option</li>
+          <li># Creative & Ready to use projects</li>
+          <li># Interviews, Blogs & Videos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- cta section discord-->
+  <section class="cta-section">
+    <h1 class="cta-heading">Want Free guidance/help in your Web Development project ?</h1>
+    <p class="cta-description">You can ask us any questions about programming on our discord channel 
+        absolutely free or simply read our blogs !</p>
+        <div class="cta-buttons">
+          <button id="discord">Join us on Discord</button>
+          <button id="blogs">Read Blogs</button>
+        </div>
+  </section>
+
+  <!-- cta section for contact us -->
+  <section class="contact-section">
+    <h1 class="section-heading">Let's Get In Touch</h1>
+    <div class="contact-columns">
+      <div class="contact-column">
+        <form>
+            <p>Let us contact you back !</p>
+          <input type="text" placeholder="Your Name"><br>
+          <input type="email" placeholder="Your Email"><br>
+          <input type="tel" placeholder="Your Contact No"><br>
+          <textarea placeholder="Your Message"></textarea><br>
+          <button>Submit</button>
+        </form>
+      </div>
+      <div class="contact-column">
+        <h1 class="social-heading">  SOCIAL</h1>
+        <ul class="social-list">
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>LinkedIn</li>
+          <li>Youtube</li>
+          <li>Twitter</li>
+          <li>Quora</li>
+          <li>StackOverflow</li>
+          <li>Discord</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!--  footer -->
+  <footer>
+    <div class="footer">
+      <div>
+        <h3>MENU</h3>
+        <ul>
+          <li>Home</li>
+          <li>Courses Offered</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+      <div>
+          <h3>OTHER</h3>
+          <ul>
+            <li>Feedback</li>
+            <li>Discuss</li>
+            <li>Call Us</li>
+            <li>Email Us</li>
+          </ul>
+      </div>
+      <div class="image-div">
+        <img src="assets/footer_logo.png" width="200px" height="200px"> 
+      </div>
+    </div>
+    <h3 class="copyright">&copy NECS  |  New Era Code School </h3>
+  </footer>
+</body>
+</html>
